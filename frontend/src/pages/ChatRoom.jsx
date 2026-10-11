@@ -39,7 +39,7 @@ export default function ChatRoom({ user }) {
   }, []);
 
   useEffect(() => {
-    document.title = chatInfo ? `${chatInfo.chat_name} | TreamAI` : `Chat: ${chatId} | TreamAI`;
+    document.title = chatInfo ? `${chatInfo.chat_name} | Teamorie` : `Chat: ${chatId} | Teamorie`;
   }, [chatId, chatInfo]);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function ChatRoom({ user }) {
         if (res.ok) {
           const data = await res.json();
           let info = data.info;
-          if (info.chat_type === 'private' && info.chat_name !== 'TreamAI Agent' && info.members) {
+          if (info.chat_type === 'private' && info.chat_name !== 'Teamorie Agent' && info.members) {
             const other = info.members.find(m => m.username !== user);
             if (other) info.chat_name = nickMap[other.username] || other.username;
           }
@@ -101,7 +101,7 @@ export default function ChatRoom({ user }) {
           ws.current.onmessage = (event) => {
             const msgData = JSON.parse(event.data);
             setMessages(prev => [...prev, msgData]);
-            if (msgData.sender === 'TreamAI Agent') {
+            if (msgData.sender === 'Teamorie Agent') {
               setIsWaitingForAgent(false);
             }
             fetch(`${baseUrl}/api/chats/${chatId}/read`, {
@@ -185,7 +185,7 @@ export default function ChatRoom({ user }) {
     }
 
     if (!input.trim()) return;
-    const isExpectingReply = (chatInfo?.chat_type === 'private' && chatInfo?.chat_name === 'TreamAI Agent') ||
+    const isExpectingReply = (chatInfo?.chat_type === 'private' && chatInfo?.chat_name === 'Teamorie Agent') ||
                              input.includes('@agent') || 
                              input.startsWith('?');
     if (isExpectingReply) setIsWaitingForAgent(true);
@@ -264,7 +264,7 @@ export default function ChatRoom({ user }) {
             }
 
             const isMe = msg.sender === user;
-            const isAgent = msg.sender === 'TreamAI Agent';
+            const isAgent = msg.sender === 'Teamorie Agent';
 
             return (
               <div key={idx} style={{ 
@@ -290,7 +290,7 @@ export default function ChatRoom({ user }) {
                   {/* Render the sender name inside the bubble */}
                   {!isMe && (
                     <div style={{ fontSize: '0.75rem', color: isAgent ? 'var(--text-main)' : (msg.color || 'var(--primary)'), marginBottom: '6px', fontWeight: 'bold' }}>
-                      {isAgent ? 'TreamAI Agent' : (nicknames[msg.sender] || msg.sender)}
+                      {isAgent ? 'Teamorie Agent' : (nicknames[msg.sender] || msg.sender)}
                     </div>
                   )}
                   {(() => {
@@ -387,7 +387,7 @@ export default function ChatRoom({ user }) {
                 whiteSpace: 'pre-wrap'
               }}>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: 'bold' }}>
-                  TreamAI Agent
+                  Teamorie Agent
                 </div>
                 <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
                   <span className="dot-anim" style={{ animationDelay: '0s' }}>.</span>
@@ -403,7 +403,7 @@ export default function ChatRoom({ user }) {
 
         {/* Input Area */}
         <div style={{ marginBottom: '-5px', padding: '5px 0', borderTop: '1px solid rgba(255,255,255,0.05)', background: 'transparent' }}>
-          {chatInfo?.chat_type === 'private' && chatInfo.chat_name !== 'TreamAI Agent' && chatInfo.is_friend === false ? (
+          {chatInfo?.chat_type === 'private' && chatInfo.chat_name !== 'Teamorie Agent' && chatInfo.is_friend === false ? (
             <div style={{ textAlign: 'center', padding: '15px', color: 'var(--text-muted)', background: 'rgba(255,255,255,0.02)', borderRadius: '12px' }}>
               You are no longer friends with this user. You cannot send new messages.
             </div>
@@ -456,7 +456,7 @@ export default function ChatRoom({ user }) {
                       sendMessage(e);
                     }
                   }}
-                  placeholder="Message (@agent to ask TreamAI)"
+                  placeholder="Message (@agent to ask Teamorie)"
                   className="hide-scrollbar"
                   rows={1}
                   style={{ 

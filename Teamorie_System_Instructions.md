@@ -1,8 +1,8 @@
-﻿# TreamAI — Full System Design & Development Instructions
+﻿# Teamorie — Full System Design & Development Instructions
 
 ## Project Overview
 
-**TreamAI** is an LLM-powered team collaboration assistant built as a Final Year Project (FYP).
+**Teamorie** is an LLM-powered team collaboration assistant built as a Final Year Project (FYP).
 
 The core research contribution is a **self-adaptive memory retrieval system** — not the chat interface itself.
 

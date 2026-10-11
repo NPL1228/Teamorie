@@ -17,21 +17,21 @@ import Layout from './components/Layout';
 import './index.css';
 
 function App() {
-  const [user, setUser] = useState(() => localStorage.getItem('treamai_user'));
-  const [theme, setTheme] = useState(() => localStorage.getItem('treamai_theme') || 'bright');
+  const [user, setUser] = useState(() => localStorage.getItem('teamorie_user'));
+  const [theme, setTheme] = useState(() => localStorage.getItem('teamorie_theme') || 'bright');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('treamai_theme', theme);
+    localStorage.setItem('teamorie_theme', theme);
   }, [theme]);
 
   const handleLogin = (username) => {
-    localStorage.setItem('treamai_user', username);
+    localStorage.setItem('teamorie_user', username);
     setUser(username);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('treamai_user');
+    localStorage.removeItem('teamorie_user');
     setUser(null);
   };
 

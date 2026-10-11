@@ -13,7 +13,7 @@ export default function Login({ onLogin }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = isRegistering ? 'Register | TreamAI' : 'Login | TreamAI';
+    document.title = isRegistering ? 'Register | Teamorie' : 'Login | Teamorie';
   }, [isRegistering]);
 
   const handleSubmit = async (e) => {
@@ -67,7 +67,7 @@ export default function Login({ onLogin }) {
         padding: '40px', width: '100%', maxWidth: '400px', textAlign: 'center'
       }}>
         <h1 style={{ marginBottom: '10px', fontSize: '2rem', background: 'linear-gradient(to right, #6366f1, #8b5cf6)', WebkitBackgroundClip: 'text', color: 'transparent' }}>
-          TreamAI
+          Teamorie
         </h1>
         <p style={{ color: 'var(--text-muted)', marginBottom: '30px' }}>
           {isRegistering ? 'Create your workspace account' : 'Sign in to collaborate'}

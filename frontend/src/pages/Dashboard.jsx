@@ -37,7 +37,7 @@ export default function Dashboard({ user, onLogout }) {
   }, []);
 
   useEffect(() => {
-    document.title = 'Dashboard | TreamAI';
+    document.title = 'Dashboard | Teamorie';
     fetchData();
   }, [user]);
 

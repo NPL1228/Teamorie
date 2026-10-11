@@ -107,8 +107,8 @@ export default function Layout({ user, onLogout, children }) {
   const teamChats = chats.filter(c => c.chat_type === 'team');
   const privateChats = chats.filter(c => c.chat_type === 'private');
   
-  const agentChat = privateChats.find(c => c.chat_name === 'TreamAI Agent');
-  const displayPrivateChats = privateChats.filter(c => c.chat_name !== 'TreamAI Agent').slice(0, 3);
+  const agentChat = privateChats.find(c => c.chat_name === 'Teamorie Agent');
+  const displayPrivateChats = privateChats.filter(c => c.chat_name !== 'Teamorie Agent').slice(0, 3);
 
   const displayTeamChats = teamChats.slice(0, 3);
 
@@ -176,7 +176,7 @@ export default function Layout({ user, onLogout, children }) {
         
           <div style={{ flexShrink: 0, padding: '0 20px', marginBottom: '20px' }}>
             <h2 style={{ fontSize: '1.5rem', margin: 0, color: 'var(--primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }} onClick={() => handleNavigate('/dashboard')}>
-              TreamAI
+              Teamorie
             </h2>
           </div>
 
@@ -246,7 +246,7 @@ export default function Layout({ user, onLogout, children }) {
                   </div>
                 ))}
                 {displayPrivateChats.length === 0 && <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginLeft: '12px' }}>No Private Chat</p>}
-                {privateChats.filter(c => c.chat_name !== 'TreamAI Agent').length > 3 && (
+                {privateChats.filter(c => c.chat_name !== 'Teamorie Agent').length > 3 && (
                   <span onClick={() => handleNavigate('/chats/private')} style={{ fontSize: '0.8rem', color: 'var(--primary)', cursor: 'pointer', marginTop: '5px' }}>Show More...</span>
                 )}
               </div>

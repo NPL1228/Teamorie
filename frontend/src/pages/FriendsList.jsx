@@ -30,7 +30,7 @@ export default function FriendsList({ user }) {
   }, []);
 
   useEffect(() => {
-    document.title = 'Friends | TreamAI';
+    document.title = 'Friends | Teamorie';
     fetchData();
   }, [user]);
 

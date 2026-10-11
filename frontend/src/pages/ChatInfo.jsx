@@ -25,7 +25,7 @@ export default function ChatInfo({ user }) {
   }, []);
 
   useEffect(() => {
-    document.title = `Chat Info | TreamAI`;
+    document.title = `Chat Info | Teamorie`;
     fetchChatInfo();
   }, [chatId]);
 
@@ -43,7 +43,7 @@ export default function ChatInfo({ user }) {
       if (res.ok) {
         const data = await res.json();
         let info = data.info;
-        if (info.chat_type === 'private' && info.chat_name !== 'TreamAI Agent' && info.members) {
+        if (info.chat_type === 'private' && info.chat_name !== 'Teamorie Agent' && info.members) {
           const other = info.members.find(m => m.username !== user);
           if (other) info.chat_name = nickMap[other.username] || other.username;
         }
@@ -101,7 +101,7 @@ export default function ChatInfo({ user }) {
   };
 
   const handleDeleteChat = async () => {
-    const isAgent = chatInfo?.chat_name === 'TreamAI Agent';
+    const isAgent = chatInfo?.chat_name === 'Teamorie Agent';
     const msg = isAgent 
       ? "Are you sure you want to clear the AI message history?" 
       : "Are you sure you want to delete this chat from your list?";
@@ -228,14 +228,14 @@ export default function ChatInfo({ user }) {
           )}
         </div>
 
-        {chatInfo.chat_name === 'TreamAI Agent' ? (
+        {chatInfo.chat_name === 'Teamorie Agent' ? (
           <div style={{ marginTop: '-40px', padding: '20px' }}>
             <div style={{ padding: '30px', background: 'transparent', borderRadius: '16px', border: '1px solid var(--border)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
                 <div style={{ padding: '12px', background: 'rgba(99, 102, 241, 0.2)', borderRadius: '12px', color: 'var(--primary)' }}>
                   <Bot size={28} />
                 </div>
-                <h2 style={{ fontSize: '1.4rem', margin: 0 }}>About TreamAI Agent</h2>
+                <h2 style={{ fontSize: '1.4rem', margin: 0 }}>About Teamorie Agent</h2>
               </div>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
@@ -273,7 +273,7 @@ export default function ChatInfo({ user }) {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px', background: 'transparent', border: '1px solid var(--primary)', borderRadius: '12px', boxShadow: '0 0 15px var(--primary-glow)', opacity: (!isOwner && chatInfo.chat_type === 'team') ? 0.6 : 1 }}>
                 <div>
                 <h2 style={{ fontSize: '1.2rem', margin: '0 0 5px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Bot size={20} color="var(--primary)" /> TreamAI Listening
+                  <Bot size={20} color="var(--primary)" /> Teamorie Listening
                 </h2>
                 <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.9rem' }}>
                   {chatInfo.chat_type === 'team' && !isOwner 
@@ -310,9 +310,9 @@ export default function ChatInfo({ user }) {
                   <div key={idx} style={{ padding: '15px', background: 'var(--bg-dark)', border: '1px solid var(--border)', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: member.color || 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>
-                        {member.username === 'TreamAI Agent' ? <Bot size={20} /> : member.username.charAt(0).toUpperCase()}
+                        {member.username === 'Teamorie Agent' ? <Bot size={20} /> : member.username.charAt(0).toUpperCase()}
                       </div>
-                      <span style={{ fontSize: '1.1rem', fontWeight: member.username === user ? 'bold' : 'normal', color: member.username === 'TreamAI Agent' ? 'var(--primary)' : 'var(--text-main)' }}>
+                      <span style={{ fontSize: '1.1rem', fontWeight: member.username === user ? 'bold' : 'normal', color: member.username === 'Teamorie Agent' ? 'var(--primary)' : 'var(--text-main)' }}>
                         {nicknames[member.username] || member.username} {member.username === user && '(You)'}
                       </span>
                     </div>
@@ -335,7 +335,7 @@ export default function ChatInfo({ user }) {
             <Trash2 size={20} /> Danger Zone
           </h2>
           <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-            {chatInfo.chat_name === 'TreamAI Agent' 
+            {chatInfo.chat_name === 'Teamorie Agent' 
               ? 'Wipe the message history for this AI chat. The chat itself will remain in your sidebar.'
               : (chatInfo.chat_type === 'team' && !hasLeft)
                 ? 'Leave this team chat. You will no longer receive messages.'
@@ -344,15 +344,15 @@ export default function ChatInfo({ user }) {
         </div>
         <button 
           onClick={() => {
-            if (chatInfo.chat_name === 'TreamAI Agent' || chatInfo.chat_type === 'private' || hasLeft) {
+            if (chatInfo.chat_name === 'Teamorie Agent' || chatInfo.chat_type === 'private' || hasLeft) {
               handleDeleteChat();
             } else {
               handleLeaveChat();
             }
           }}
-          style={{ background: (chatInfo.chat_type === 'team' && !hasLeft && chatInfo.chat_name !== 'TreamAI Agent') ? '#f59e0b' : '#ef4444', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold', flexShrink: 0, width: isMobile ? '100%' : 'auto' }}
+          style={{ background: (chatInfo.chat_type === 'team' && !hasLeft && chatInfo.chat_name !== 'Teamorie Agent') ? '#f59e0b' : '#ef4444', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold', flexShrink: 0, width: isMobile ? '100%' : 'auto' }}
         >
-          {chatInfo.chat_name === 'TreamAI Agent' 
+          {chatInfo.chat_name === 'Teamorie Agent' 
             ? 'Clear History' 
             : (chatInfo.chat_type === 'team' && !hasLeft) 
               ? 'Leave Chat' 

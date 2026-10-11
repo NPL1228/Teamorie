@@ -9,7 +9,7 @@ export default function ForgotPassword() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = 'Forgot Password | TreamAI';
+    document.title = 'Forgot Password | Teamorie';
   }, []);
 
   const handleSubmit = async (e) => {

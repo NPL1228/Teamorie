@@ -8,7 +8,7 @@ token | email | expires_at
 
 === Chats (5 rows) ===
 chat_id | chat_name | chat_type | last_activity | created_at | description | ai_listening
-ai-NPLyay-8608 | TreamAI Agent | private | 2026-08-23 15:00:58 | 2026-08-15 01:19:42 | NULL | 1
+ai-NPLyay-8608 | Teamorie Agent | private | 2026-08-23 15:00:58 | 2026-08-15 01:19:42 | NULL | 1
 V8UIJ4O0 | Teamora Test | team | 2026-08-15 01:48:35 | 2026-08-15 01:48:28 | NULL | 1
 ONUC10Z3 | Team test 2 | team | 2026-08-15 01:50:23 | 2026-08-15 01:50:23 | NULL | 1
 X8PWCTTZ | 12344 | team | 2026-08-15 01:51:12 | 2026-08-15 01:51:12 | NULL | 1
@@ -36,7 +36,7 @@ V8UIJ4O0 | NPLyay | owner | 2026-08-15 01:48:28 | 2026-08-23 16:38:32 | NULL | 0
 ONUC10Z3 | NPLyay | owner | 2026-08-15 01:50:23 | 2026-08-23 16:38:32 | NULL | 0
 X8PWCTTZ | NPLyay | owner | 2026-08-15 01:51:12 | 2026-08-23 16:38:32 | NULL | 0
 SLPERJB8 | NPLyay | owner | 2026-08-15 01:51:16 | 2026-08-27 17:59:06 | NULL | 0
-ai-NPLyay-8608 | TreamAI Agent | member | 2026-08-27 18:03:13 | NULL | NULL | 0
+ai-NPLyay-8608 | Teamorie Agent | member | 2026-08-27 18:03:13 | NULL | NULL | 0
 
 === Weights (0 rows) ===
 id | chat_id | project_id | w1 | w2 | w3 | alpha | updated_at
@@ -52,17 +52,17 @@ id | chat_id | message | user_name | timestamp
 === Messages (13 rows) ===
 id | chat_id | sender | text | timestamp
 1 | ai-NPLyay-8608 | NPLyay | vg | 2026-08-23 06:01:36
-2 | ai-NPLyay-8608 | TreamAI Agent | ⚠️ Internal server error. | 2026-08-23 06:01:43
+2 | ai-NPLyay-8608 | Teamorie Agent | ⚠️ Internal server error. | 2026-08-23 06:01:43
 3 | ai-NPLyay-8608 | NPLyay | rg | 2026-08-23 06:01:43
-4 | ai-NPLyay-8608 | TreamAI Agent | Noted. | 2026-08-23 06:01:50
+4 | ai-NPLyay-8608 | Teamorie Agent | Noted. | 2026-08-23 06:01:50
 5 | ai-NPLyay-8608 | NPLyay | hey | 2026-08-23 14:56:44
-6 | ai-NPLyay-8608 | TreamAI Agent | Hey there! How can I help you today? | 2026-08-23 14:56:50
+6 | ai-NPLyay-8608 | Teamorie Agent | Hey there! How can I help you today? | 2026-08-23 14:56:50
 7 | ai-NPLyay-8608 | NPLyay | who are you | 2026-08-23 14:56:55
-8 | ai-NPLyay-8608 | TreamAI Agent | I am TreamAI, a helpful AI assistant! How can I assist you further? | 2026-08-23 14:56:58
+8 | ai-NPLyay-8608 | Teamorie Agent | I am Teamorie, a helpful AI assistant! How can I assist you further? | 2026-08-23 14:56:58
 9 | ai-NPLyay-8608 | NPLyay | what and how can you help me | 2026-08-23 14:57:09
-10 | ai-NPLyay-8608 | TreamAI Agent | I'm TreamAI, a helpful AI assistant! I can assist you with a wide range of tasks, like answering your questions, providing information, generating creative content, summarizing topics, and much more. Just tell me what you need, and I'll do my best to help you out! | 2026-08-23 14:57:12
+10 | ai-NPLyay-8608 | Teamorie Agent | I'm Teamorie, a helpful AI assistant! I can assist you with a wide range of tasks, like answering your questions, providing information, generating creative content, summarizing topics, and much more. Just tell me what you need, and I'll do my best to help you out! | 2026-08-23 14:57:12
 11 | ai-NPLyay-8608 | NPLyay | hellofd efuvjhmsd fewuidhcvbnkjms rgvsuhikjb rgvrdshuikb edvxcuhdjknmr bhvj bvbyugrfwh ,dvc | 2026-08-23 15:00:58
-12 | ai-NPLyay-8608 | TreamAI Agent | Hello there! It looks like there might be a typo in your message, or perhaps I'm having a bit of trouble understanding it. Could you please rephrase what you're trying to say, or let me know how I can help you? | 2026-08-23 15:01:04
+12 | ai-NPLyay-8608 | Teamorie Agent | Hello there! It looks like there might be a typo in your message, or perhaps I'm having a bit of trouble understanding it. Could you please rephrase what you're trying to say, or let me know how I can help you? | 2026-08-23 15:01:04
 13 | SLPERJB8 | NPLyay | hi | 2026-08-27 17:59:06
 
 === Notifications (0 rows) ===

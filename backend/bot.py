@@ -27,8 +27,8 @@ async def handle_message(chat_id: str, text: str, user_name: str):
         chat_type = chat["chat_type"]
         chat_name = chat["chat_name"]
 
-        # Route 1: Private Chat with TreamAI Agent
-        if chat_type == "private" and chat_name == "TreamAI Agent":
+        # Route 1: Private Chat with Teamorie Agent
+        if chat_type == "private" and chat_name == "Teamorie Agent":
             print(">>> Private Agent Chat (Intent Classification)")
             response = private_agent_pipeline.process_private_message(chat_id, text, user_name)
             if response and "text" in response:

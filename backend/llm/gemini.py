@@ -62,7 +62,7 @@ def summarize_messages(messages, current_projects):
     ) or "None"
 
     prompt = f"""
-You are TreamAI.
+You are Teamorie.
 
 Current Projects:
 {projects}
@@ -144,7 +144,7 @@ def generate_response(query: str, project_nodes: list, chat_nodes: list = None, 
         )
         
     prompt = f"""
-    You are TreamAI, a helpful AI assistant.
+    You are Teamorie, a helpful AI assistant.
     
     {history_text}
     
@@ -175,7 +175,7 @@ def classify_private_message(message: str, current_projects: list):
     ) or "None"
 
     prompt = f"""
-You are TreamAI Agent in a private 1-on-1 chat with a user.
+You are Teamorie Agent in a private 1-on-1 chat with a user.
 Your job is to classify their message into one of three intents:
 1. Query: the user is asking a question or requesting information.
 2. Correction: the user is correcting an existing memory or fact.

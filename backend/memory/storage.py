@@ -165,10 +165,10 @@ def register_user(username: str, email: str, password_hash: str) -> bool:
     try:
         conn.execute("INSERT INTO Users (username, email, password_hash) VALUES (?, ?, ?)", (username, email, password_hash))
         
-        # Auto-generate a private chat with the TreamAI Agent
+        # Auto-generate a private chat with the Teamorie Agent
         ai_chat_id = f"ai-{username}-{random.randint(1000, 9999)}"
         conn.execute("INSERT INTO Chats (chat_id, chat_name, chat_type, ai_listening) VALUES (?, ?, ?, 1)", 
-                     (ai_chat_id, "TreamAI Agent", "private"))
+                     (ai_chat_id, "Teamorie Agent", "private"))
         conn.execute("INSERT INTO Chat_Members (chat_id, user_name) VALUES (?, ?)", 
                      (ai_chat_id, username))
                      
@@ -317,7 +317,7 @@ USER_COLORS = [
 ]
 
 def get_user_color(space_id: str, user_id: str) -> str:
-    if user_id == "TreamAI Agent":
+    if user_id == "Teamorie Agent":
         return "#ffffff" # Default white/secondary for agent, handled by UI mostly
     key = f"{space_id}:{user_id}"
     hash_value = hashlib.sha256(key.encode("utf-8")).hexdigest()
@@ -389,10 +389,10 @@ def register_user(username: str, email: str, password_hash: str) -> bool:
     try:
         conn.execute("INSERT INTO Users (username, email, password_hash) VALUES (?, ?, ?)", (username, email, password_hash))
         
-        # Auto-generate a private chat with the TreamAI Agent
+        # Auto-generate a private chat with the Teamorie Agent
         ai_chat_id = f"ai-{username}-{random.randint(1000, 9999)}"
         conn.execute("INSERT INTO Chats (chat_id, chat_name, chat_type, ai_listening) VALUES (?, ?, ?, 1)", 
-                     (ai_chat_id, "TreamAI Agent", "private"))
+                     (ai_chat_id, "Teamorie Agent", "private"))
         conn.execute("INSERT INTO Chat_Members (chat_id, user_name) VALUES (?, ?)", 
                      (ai_chat_id, username))
                      
@@ -427,7 +427,7 @@ def get_user_chats(username: str) -> list:
         last_activity = r[3]
         unread = r[4]
         
-        if chat_type == 'private' and chat_name != 'TreamAI Agent':
+        if chat_type == 'private' and chat_name != 'Teamorie Agent':
             # find the other member
             cursor.execute("SELECT user_name FROM Chat_Members WHERE chat_id = ? AND user_name != ?", (chat_id, username))
             other = cursor.fetchone()
@@ -580,7 +580,7 @@ def get_chat_info(chat_id: str):
     
     # Check if they are still friends (for private chats)
     chat["is_friend"] = True
-    if chat["chat_type"] == 'private' and chat["chat_name"] != 'TreamAI Agent' and len(rows) >= 2:
+    if chat["chat_type"] == 'private' and chat["chat_name"] != 'Teamorie Agent' and len(rows) >= 2:
         # Get active members
         active = [r[0] for r in rows if r[1] != 'left']
         if len(active) == 2:
@@ -665,10 +665,10 @@ def delete_chat(chat_id: str, username: str = None) -> bool:
     conn = get_connection()
     cursor = conn.cursor()
     try:
-        # Check if this is the TreamAI Agent chat
+        # Check if this is the Teamorie Agent chat
         cursor.execute("SELECT chat_name FROM Chats WHERE chat_id = ?", (chat_id,))
         chat_row = cursor.fetchone()
-        if chat_row and chat_row[0] == "TreamAI Agent":
+        if chat_row and chat_row[0] == "Teamorie Agent":
             # Just wipe the content, never hide the chat
             cursor.execute("DELETE FROM Messages WHERE chat_id = ?", (chat_id,))
             conn.commit()

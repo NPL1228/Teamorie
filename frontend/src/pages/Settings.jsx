@@ -13,7 +13,7 @@ export default function Settings({ user, onUserUpdate, theme, setTheme }) {
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
-    document.title = 'Settings | TreamAI';
+    document.title = 'Settings | Teamorie';
     if (user) {
       const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8443';
       fetch(`${baseUrl}/api/users/${user}`)
@@ -43,7 +43,7 @@ export default function Settings({ user, onUserUpdate, theme, setTheme }) {
         body: JSON.stringify({ old_username: user, new_username: newUsername.trim() })
       });
       if (res.ok) {
-        localStorage.setItem('treamai_user', newUsername.trim());
+        localStorage.setItem('teamorie_user', newUsername.trim());
         if (onUserUpdate) onUserUpdate(newUsername.trim());
         setStatus({ type: 'success', msg: 'Username updated successfully!' });
         setIsEditing(false);

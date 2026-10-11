@@ -191,13 +191,17 @@ weight_history: {
 ``` 
 
 ### Adaptive Pruning Score ^fcbfaf
-`prune_score = age_factor × (1 / (access_count + 1))`
+`prune_score = age_factor * (1 / (effective_freq + 1))`
 where:
-  `age_factor   = (current_time - timestamp) / max_age`
-  `access_count = number of times retrieved and used` 
+  `age_factor     = min(days_old / max_age_days, 1.0)`
+  `decay_factor   = e^(-λ * days_since_last_accessed)`
+  `effective_freq = access_count * decay_factor`
 
 ### Multi-factor Retrieval Score ^5014c4
-`retrieval_score = (w1 * semantic_similarity_score) + (w2 * recency_score) + (w3 * frequency_score)
+`retrieval_score = (w1 * semantic_similarity_score) + (w2 * recency_score) + (w3 * frequency_score)`
+where:
+  `recency_score   = 1 / (1 + days_old)`
+  `frequency_score = access_count / max_access_in_pool`
 
 ### LLM Topic Shift Detection ^bd9c39
 LLM prompt:

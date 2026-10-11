@@ -1,6 +1,6 @@
-# TreamAI Feature Documentation
+# Teamorie Feature Documentation
 
-This document serves as a comprehensive index of all the functionalities currently implemented and available on the TreamAI platform.
+This document serves as a comprehensive index of all the functionalities currently implemented and available on the Teamorie platform.
 
 ## 1. User Authentication & Profile Management
 - **Account Creation & Login**: Secure registration and login flow.
@@ -35,8 +35,8 @@ This document serves as a comprehensive index of all the functionalities current
 - **Ownership Transfer**: If the `owner` of a team chat leaves or deletes the chat, ownership is automatically transferred to the next oldest active member.
 - **Auto-Cleanup**: If the final active member leaves/deletes a chat, the backend automatically executes a hard-delete, wiping all associated buffers, projects, and tables to save space.
 
-## 5. TreamAI Agent Capabilities
-- **Private Agent DMs**: Users can DM the TreamAI Agent directly. The agent bypasses standard classification and responds conversationally and immediately.
+## 5. Teamorie Agent Capabilities
+- **Private Agent DMs**: Users can DM the Teamorie Agent directly. The agent bypasses standard classification and responds conversationally and immediately.
 - **Team Chat Integration**: The agent can be added to team environments.
 - **Smart Mentions**: In team chats, the agent responds when explicitly mentioned (e.g., `@agent`, or starting a message with `?`).
 - **AI Listening Toggle**: Users can toggle the AI's "listening" status in chat info menus to control its autonomy in team settings.

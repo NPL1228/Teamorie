@@ -29,7 +29,7 @@ export default function ChatList({ user, type }) {
   };
 
   useEffect(() => {
-    document.title = type === 'private' ? 'Private Chats | TreamAI' : 'Team Chats | TreamAI';
+    document.title = type === 'private' ? 'Private Chats | Teamorie' : 'Team Chats | Teamorie';
     fetchChats();
 
     globalWs.current = new WebSocket(`${wsUrl}/ws/global/${user}`);
@@ -96,7 +96,7 @@ export default function ChatList({ user, type }) {
   
   // Sort Agent to top for private chats if present
   if (type === 'private') {
-    const agentIndex = filteredChats.findIndex(c => c.chat_name === 'TreamAI Agent');
+    const agentIndex = filteredChats.findIndex(c => c.chat_name === 'Teamorie Agent');
     if (agentIndex > -1) {
       const agent = filteredChats.splice(agentIndex, 1)[0];
       filteredChats.unshift(agent);
@@ -153,19 +153,19 @@ export default function ChatList({ user, type }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                background: chat.chat_name === 'TreamAI Agent' ? 'rgba(99, 102, 241, 0.15)' : 'var(--input-bg)',
-                border: chat.chat_name === 'TreamAI Agent' ? '1px solid rgba(99, 102, 241, 0.3)' : '1px solid var(--border)'
+                background: chat.chat_name === 'Teamorie Agent' ? 'rgba(99, 102, 241, 0.15)' : 'var(--input-bg)',
+                border: chat.chat_name === 'Teamorie Agent' ? '1px solid rgba(99, 102, 241, 0.3)' : '1px solid var(--border)'
               }}
               className="hover-bg"
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px', flex: 1, minWidth: 0 }}>
                 {type === 'private' ? (
-                  <MessageSquare size={20} color={chat.chat_name === 'TreamAI Agent' ? 'var(--primary)' : 'var(--text-muted)'} style={{ flexShrink: 0 }} />
+                  <MessageSquare size={20} color={chat.chat_name === 'Teamorie Agent' ? 'var(--primary)' : 'var(--text-muted)'} style={{ flexShrink: 0 }} />
                 ) : (
                   <Hash size={20} color="var(--text-muted)" style={{ flexShrink: 0 }} />
                 )}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, minWidth: 0 }}>
-                  <span style={{ fontSize: '1.1rem', fontWeight: chat.chat_name === 'TreamAI Agent' ? '600' : 'normal', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chat.chat_name}</span>
+                  <span style={{ fontSize: '1.1rem', fontWeight: chat.chat_name === 'Teamorie Agent' ? '600' : 'normal', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{chat.chat_name}</span>
                   {chat.role === 'left' && (
                     <span style={{ fontSize: '0.7rem', background: 'rgba(239, 68, 68, 0.2)', color: '#ef4444', padding: '2px 8px', borderRadius: '10px', flexShrink: 0 }}>
                       Left

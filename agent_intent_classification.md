@@ -1,12 +1,12 @@
-# TreamAI Agent Intent Classification Architecture
+# Teamorie Agent Intent Classification Architecture
 
-The TreamAI Agent utilizes a lightweight LLM orchestration layer to dynamically classify what the user is trying to achieve. Because the agent serves different purposes depending on the context, the classification logic is split into two distinct environments: **Private Agent Chat** (1-on-1) and **Team Space Chat** (Group context).
+The Teamorie Agent utilizes a lightweight LLM orchestration layer to dynamically classify what the user is trying to achieve. Because the agent serves different purposes depending on the context, the classification logic is split into two distinct environments: **Private Agent Chat** (1-on-1) and **Team Space Chat** (Group context).
 
 ---
 
 ## 1. Private Agent Chat (1-on-1)
 
-When you message the "TreamAI Agent" directly in a private chat, the agent acts as your personal memory assistant. Every message you send is passed through `gemini.classify_private_message()` to determine if you are asking a question, teaching it a new fact, or fixing an old memory.
+When you message the "Teamorie Agent" directly in a private chat, the agent acts as your personal memory assistant. Every message you send is passed through `gemini.classify_private_message()` to determine if you are asking a question, teaching it a new fact, or fixing an old memory.
 
 ### Possible Intents
 
