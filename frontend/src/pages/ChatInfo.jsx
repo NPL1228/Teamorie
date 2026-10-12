@@ -287,7 +287,7 @@ export default function ChatInfo({ user }) {
                   handleToggleAI();
                 }}
                 style={{ 
-                  width: '50px', height: '26px', background: aiListening ? 'var(--primary)' : 'rgba(255,255,255,0.1)', 
+                  width: '50px', height: '26px', background: aiListening ? 'var(--primary)' : 'rgba(128, 128, 128, 0.25)', 
                   borderRadius: '13px', position: 'relative', cursor: (chatInfo.chat_type === 'team' && !isOwner) ? 'not-allowed' : 'pointer',
                   transition: 'background 0.3s', flexShrink: 0, opacity: (chatInfo.chat_type === 'team' && !isOwner) ? 0.5 : 1
                 }}

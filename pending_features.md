@@ -69,6 +69,12 @@ A reference list of all features and schema changes discussed that are not yet r
 
 ---
 
+### 8. Additional Features
+- create a custom user interface for admin to monitor usage, database, data in backend for analysis
+- move all chats into 1 dedicated page, not shown in sidebar to preserve space for other features
+- add features like calendar (can refer to teams or slack), but can be used by AI
+
+
 ## Notes
 - Items **1 and 2** are tightly coupled — project weight routing only becomes useful once weights are properly seeded at project creation.
 - Items **3, 4, and 5** together complete the full adaptive pruning lifecycle as documented in the FYP thesis.

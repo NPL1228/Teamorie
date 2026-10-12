@@ -69,9 +69,16 @@ export default function Login({ onLogin }) {
       <div ref={cardRef} className="glass-panel animate-fade-in" style={{
         padding: '40px', width: '100%', maxWidth: '400px', textAlign: 'center', position: 'relative', zIndex: 1
       }}>
-        <h1 style={{ marginBottom: '10px', fontSize: '2rem', background: 'linear-gradient(to right, #6366f1, #8b5cf6)', WebkitBackgroundClip: 'text', color: 'transparent' }}>
-          Teamorie
-        </h1>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '10px' }}>
+          <img 
+            src="/logo.png" 
+            alt="Teamorie Logo" 
+            style={{ width: '60px', height: '60px', objectFit: 'contain' }} 
+          />
+          <h1 style={{ margin: 0, fontSize: '2rem', background: 'linear-gradient(to right, #6366f1, #8b5cf6)', WebkitBackgroundClip: 'text', color: 'transparent' }}>
+            Teamorie
+          </h1>
+        </div>
         <p style={{ color: 'var(--text-muted)', marginBottom: '30px' }}>
           {isRegistering ? 'Create your workspace account' : 'Sign in to collaborate'}
         </p>

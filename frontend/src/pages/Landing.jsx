@@ -1,13 +1,28 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MessageSquare, Zap, Shield, Menu, X } from 'lucide-react';
+import { ArrowRight, MessageSquare, Zap, Shield, Menu, X, Sun, Moon } from 'lucide-react';
 import NetworkBackground from '../components/NetworkBackground';
 
-export default function Landing() {
+export default function Landing({ theme, setTheme }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [localTheme, setLocalTheme] = useState(() => {
+    return theme || (typeof document !== 'undefined' ? (document.documentElement.getAttribute('data-theme') || 'bright') : 'bright');
+  });
   const menuRef = useRef(null);
   const heroRef = useRef(null);
+
+  const currentTheme = theme || localTheme;
+
+  const toggleTheme = () => {
+    const nextTheme = currentTheme === 'bright' ? 'dark' : 'bright';
+    if (setTheme) {
+      setTheme(nextTheme);
+    }
+    setLocalTheme(nextTheme);
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('teamorie_theme', nextTheme);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,7 +51,7 @@ export default function Landing() {
   }, [menuOpen]);
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--bg-main)', color: 'var(--text-main)', position: 'relative' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--bg-dark)', color: 'var(--text-main)', position: 'relative' }}>
       {/* Interactive Network Nodes Canvas */}
       <NetworkBackground obstacleRef={heroRef} />
 
@@ -56,7 +71,28 @@ export default function Landing() {
         </div>
 
         {!isMobile ? (
-          <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+            <button
+              onClick={toggleTheme}
+              title={currentTheme === 'bright' ? 'Switch to Dark Theme' : 'Switch to Bright Theme'}
+              aria-label="Toggle theme"
+              style={{
+                background: 'transparent',
+                border: '1px solid var(--border)',
+                borderRadius: '50%',
+                width: '38px',
+                height: '38px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                color: 'var(--text-main)',
+                transition: 'all 0.2s ease',
+              }}
+              className="hover-bg"
+            >
+              {currentTheme === 'bright' ? <Moon size={20} /> : <Sun size={20} />}
+            </button>
             <a href="#about" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }} className="hover-text-primary">About</a>
             <a href="#contact" style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }} className="hover-text-primary">Contact</a>
             <Link to="/login" className="btn-primary" style={{ padding: '8px 20px', textDecoration: 'none' }}>
@@ -96,6 +132,28 @@ export default function Landing() {
                 transition: 'opacity 0.25s ease, transform 0.25s ease'
               }}
             >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 10px', borderBottom: '1px solid var(--border)', marginBottom: '4px' }}>
+                <span style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Theme</span>
+                <button
+                  onClick={toggleTheme}
+                  title={currentTheme === 'bright' ? 'Switch to Dark Theme' : 'Switch to Bright Theme'}
+                  aria-label="Toggle theme"
+                  style={{
+                    background: 'transparent',
+                    border: '1px solid var(--border)',
+                    borderRadius: '50%',
+                    width: '36px',
+                    height: '36px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    color: 'var(--text-main)',
+                  }}
+                >
+                  {currentTheme === 'bright' ? <Moon size={18} /> : <Sun size={18} />}
+                </button>
+              </div>
               <a 
                 href="#about" 
                 onClick={() => setMenuOpen(false)}
@@ -140,7 +198,7 @@ export default function Landing() {
         </Link>
 
         {/* Feature Highlights */}
-        <div style={{ display: 'flex', gap: '40px', marginTop: '80px', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <div id="about" style={{ display: 'flex', gap: '40px', marginTop: '80px', flexWrap: 'wrap', justifyContent: 'center', scrollMarginTop: '100px' }}>
           <FeatureCard 
             icon={<Zap size={32} color="var(--primary)" />} 
             title="Instant Retrieval" 
@@ -170,7 +228,7 @@ export default function Landing() {
 
 function FeatureCard({ icon, title, description }) {
   return (
-    <div className="feature-card" style={{ backgroundColor: 'var(--popup-bg)', border: '1px solid var(--border)', borderRadius: '16px', padding: '30px', width: '300px', textAlign: 'left', position: 'relative', zIndex: 10 }}>
+    <div className="feature-card" style={{ backgroundColor: 'var(--popup-bg)', borderRadius: '16px', padding: '30px', width: '300px', textAlign: 'left', position: 'relative', zIndex: 10 }}>
       <div style={{ marginBottom: '20px' }}>{icon}</div>
       <h3 style={{ fontSize: '1.2rem', margin: '0 0 10px 0', color: 'var(--text-main)' }}>{title}</h3>
       <p style={{ color: 'var(--text-muted)', margin: 0, lineHeight: '1.5' }}>{description}</p>

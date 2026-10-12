@@ -264,7 +264,8 @@ export default function ChatRoom({ user }) {
             }
 
             const isMe = msg.sender === user;
-            const isAgent = msg.sender === 'Teamorie Agent';
+            const isAgent = msg.sender === 'Teamorie Agent' || msg.sender === 'TreamAI Agent';
+            const isPrivateChat = chatInfo && chatInfo.chat_type === 'private';
 
             return (
               <div key={idx} style={{ 
@@ -277,9 +278,8 @@ export default function ChatRoom({ user }) {
                 <div style={{
                   padding: '12px 18px',
                   borderRadius: '16px',
-                  background: isMe ? 'var(--bubble-me)' : 
-                             (isAgent ? 'rgba(99, 102, 241, 0.1)' : 'var(--input-bg)'),
-                  border: isAgent ? '1px solid var(--secondary)' : '1px solid var(--border)',
+                  background: isMe ? 'var(--bubble-me)' : 'var(--input-bg)',
+                  border: '1px solid var(--border)',
                   color: isMe ? 'var(--bubble-text)' : 'var(--text-main)',
                   borderBottomRightRadius: isMe ? '4px' : '16px',
                   borderBottomLeftRadius: !isMe ? '4px' : '16px',
@@ -289,7 +289,12 @@ export default function ChatRoom({ user }) {
                 }}>
                   {/* Render the sender name inside the bubble */}
                   {!isMe && (
-                    <div style={{ fontSize: '0.75rem', color: isAgent ? 'var(--text-main)' : (msg.color || 'var(--primary)'), marginBottom: '6px', fontWeight: 'bold' }}>
+                    <div style={{ 
+                      fontSize: '0.75rem', 
+                      color: (isPrivateChat || isAgent) ? 'var(--private-bubble-name)' : (msg.color || 'var(--primary)'), 
+                      marginBottom: '6px', 
+                      fontWeight: 'bold' 
+                    }}>
                       {isAgent ? 'Teamorie Agent' : (nicknames[msg.sender] || msg.sender)}
                     </div>
                   )}

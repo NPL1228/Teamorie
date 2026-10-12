@@ -52,7 +52,7 @@ function App() {
         />
         <Route 
           path="/" 
-          element={!user ? <Landing /> : <Navigate to="/dashboard" />} 
+          element={!user ? <Landing theme={theme} setTheme={setTheme} /> : <Navigate to="/dashboard" />} 
         />
         <Route 
           path="/dashboard" 

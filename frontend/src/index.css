@@ -14,6 +14,7 @@
   --sidebar-active-bg: rgba(255, 255, 255, 0.1);
   --bubble-me: linear-gradient(135deg, var(--primary), var(--secondary));
   --bubble-text: white;
+  --private-bubble-name: #ffffff;
   --role-owner-text: #eab308;
   --role-owner-bg: rgba(234, 179, 8, 0.2);
   
@@ -36,6 +37,7 @@
   --sidebar-active-bg: rgba(126, 34, 206, 0.1);
   --bubble-me: linear-gradient(135deg, #9333ea, #a855f7);
   --bubble-text: white;
+  --private-bubble-name: #000000;
   --role-owner-text: #854d0e;
   --role-owner-bg: rgba(234, 179, 8, 0.15);
 }
@@ -215,6 +217,7 @@ select.input-field option {
 
 
 .feature-card {
+  border: 1px solid var(--border);
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
   cursor: default;
 }
@@ -224,3 +227,33 @@ select.input-field option {
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
   border-color: rgba(99, 102, 241, 0.4) !important;
 }
+
+/* Faint glowing effect in dark theme for feature boxes, login content, forgot password, reset password, and meeting left */
+:root:not([data-theme='bright']) .feature-card,
+[data-theme='dark'] .feature-card{
+  border-color: rgba(99, 102, 241, 0.45) !important;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5), 
+    0 0 25px rgba(99, 102, 241, 0.25), 
+    0 0 50px rgba(139, 92, 246, 0.2) !important;
+}
+
+:root:not([data-theme='bright']) .glass-panel,
+[data-theme='dark'] .glass-panel {
+  border-color: rgba(99, 102, 241, 0.45) !important;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5), 
+    0 0 35px rgba(99, 102, 241, 0.25), 
+    0 0 75px rgba(139, 92, 246, 0.2) !important;
+}
+
+:root:not([data-theme='bright']) .feature-card:hover,
+[data-theme='dark'] .feature-card:hover {
+  border-color: rgba(139, 92, 246, 0.8) !important;
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.6), 
+    0 0 25px rgba(99, 102, 241, 0.4), 
+    0 0 50px rgba(139, 92, 246, 0.35) !important;
+}
+
+

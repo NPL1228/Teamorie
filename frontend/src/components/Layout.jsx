@@ -175,7 +175,12 @@ export default function Layout({ user, onLogout, children }) {
         }}>
         
           <div style={{ flexShrink: 0, padding: '0 20px', marginBottom: '20px' }}>
-            <h2 style={{ fontSize: '1.5rem', margin: 0, color: 'var(--primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }} onClick={() => handleNavigate('/dashboard')}>
+            <h2 style={{ fontSize: '1.8rem', margin: 0, color: 'var(--primary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }} onClick={() => handleNavigate('/dashboard')}>
+              <img 
+                src="/logo.png" 
+                alt="Teamorie Logo" 
+                style={{ width: '40px', height: '40px', objectFit: 'contain' }} 
+              />
               Teamorie
             </h2>
           </div>

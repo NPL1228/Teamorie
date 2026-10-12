@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, User, Bell, Shield, Palette } from 'lucide-react';
+import { ArrowLeft, User, Bell, Shield, Palette, Sun, Moon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function Settings({ user, onUserUpdate, theme, setTheme }) {
@@ -106,46 +106,70 @@ export default function Settings({ user, onUserUpdate, theme, setTheme }) {
         </div>
       </div>
 
-      <div className="glass-panel animate-fade-in" style={{ padding: '30px', marginBottom: '20px', animationDelay: '0.1s' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
-          <Palette size={24} color="var(--secondary)" />
-          <h2 style={{ margin: 0 }}>Appearance</h2>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
-          {/* Bright Theme Card */}
-          <div 
-            onClick={() => setTheme('bright')}
-            style={{ 
-              border: theme === 'bright' ? '2px solid var(--primary)' : '1px solid var(--border)', 
-              borderRadius: '12px', 
-              padding: '20px', 
-              cursor: 'pointer', 
-              background: 'rgba(255, 255, 255, 0.85)',
-              color: '#1f2937',
-              transition: 'all 0.2s ease',
-              opacity: theme === 'bright' ? 1 : 0.7
-            }}
-          >
-            <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>Bright Theme</div>
-            <div style={{ fontSize: '0.85rem', color: '#6b7280' }}>Clean, white layout with pale purple accents.</div>
+      <div className="glass-panel animate-fade-in" style={{ padding: '22px 30px', marginBottom: '20px', animationDelay: '0.1s' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+            <Palette size={24} color="var(--secondary)" />
+            <div>
+              <h2 style={{ margin: 0, fontSize: '1.25rem' }}>Appearance</h2>
+              <p style={{ margin: '3px 0 0 0', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                Customize your interface theme
+              </p>
+            </div>
           </div>
 
-          {/* Dark Theme Card */}
-          <div 
-            onClick={() => setTheme('dark')}
-            style={{ 
-              border: theme === 'dark' ? '2px solid var(--primary)' : '1px solid var(--border)', 
-              borderRadius: '12px', 
-              padding: '20px', 
-              cursor: 'pointer', 
-              background: '#0f1115',
-              color: '#f3f4f6',
-              transition: 'all 0.2s ease',
-              opacity: theme === 'dark' ? 1 : 0.7
-            }}
-          >
-            <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>Dark Theme</div>
-            <div style={{ fontSize: '0.85rem', color: '#9ca3af' }}>Deep contrasts optimized for low light.</div>
+          {/* Simple Compact Toggle (Bright / Dark) */}
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            backgroundColor: 'var(--input-bg)',
+            border: '1px solid var(--border)',
+            borderRadius: '10px',
+            padding: '4px',
+            gap: '4px'
+          }}>
+            <button
+              type="button"
+              onClick={() => setTheme('bright')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '6px 16px',
+                borderRadius: '8px',
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: '0.9rem',
+                fontWeight: theme === 'bright' ? '600' : '400',
+                backgroundColor: theme === 'bright' ? 'var(--primary)' : 'transparent',
+                color: theme === 'bright' ? '#ffffff' : 'var(--text-muted)',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <Sun size={16} />
+              <span>Bright</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setTheme('dark')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '6px 16px',
+                borderRadius: '8px',
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: '0.9rem',
+                fontWeight: theme !== 'bright' ? '600' : '400',
+                backgroundColor: theme !== 'bright' ? 'var(--primary)' : 'transparent',
+                color: theme !== 'bright' ? '#ffffff' : 'var(--text-muted)',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <Moon size={16} />
+              <span>Dark</span>
+            </button>
           </div>
         </div>
       </div>

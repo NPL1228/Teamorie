@@ -13,7 +13,16 @@ python view_sqlite.py
 C:\Users\Gigabyte\AppData\Local\Programs\Python\Python310\python.exe view_chroma.py
 
 Run agent in oracle:
+
+Create New Screen:
+screen -S Teamorie
+
+Connect to Screen:
 screen -r Teamorie 
+
+Remove old Screen:
+screen -X -S Teamorie quit
+
 pkill -f uvicorn
 cd backend/
 source venv/bin/activate
