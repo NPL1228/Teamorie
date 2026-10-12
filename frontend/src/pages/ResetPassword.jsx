@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Lock, ArrowRight } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import NetworkBackground from '../components/NetworkBackground';
 
 export default function ResetPassword() {
   const [password, setPassword] = useState('');
@@ -9,6 +10,7 @@ export default function ResetPassword() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const cardRef = useRef(null);
 
   // Extract token from URL ?token=...
   const queryParams = new URLSearchParams(location.search);
@@ -59,10 +61,11 @@ export default function ResetPassword() {
 
   return (
     <div style={{
-      display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '20px'
+      display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '20px', position: 'relative'
     }}>
-      <div className="glass-panel animate-fade-in" style={{
-        padding: '40px', width: '100%', maxWidth: '400px', textAlign: 'center'
+      <NetworkBackground obstacleRef={cardRef} />
+      <div ref={cardRef} className="glass-panel animate-fade-in" style={{
+        padding: '40px', width: '100%', maxWidth: '400px', textAlign: 'center', position: 'relative', zIndex: 1
       }}>
         
         <h1 style={{ marginBottom: '10px', fontSize: '1.8rem' }}>

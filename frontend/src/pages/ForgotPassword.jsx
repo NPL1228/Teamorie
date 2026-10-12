@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Mail, ArrowLeft, Send } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import NetworkBackground from '../components/NetworkBackground';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState({ type: '', message: '' });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const cardRef = useRef(null);
 
   useEffect(() => {
     document.title = 'Forgot Password | Teamorie';
@@ -42,10 +44,11 @@ export default function ForgotPassword() {
 
   return (
     <div style={{
-      display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '20px'
+      display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '20px', position: 'relative'
     }}>
-      <div className="glass-panel animate-fade-in" style={{
-        padding: '40px', width: '100%', maxWidth: '400px', textAlign: 'center', position: 'relative'
+      <NetworkBackground obstacleRef={cardRef} />
+      <div ref={cardRef} className="glass-panel animate-fade-in" style={{
+        padding: '40px', width: '100%', maxWidth: '400px', textAlign: 'center', position: 'relative', zIndex: 1
       }}>
         
         <button onClick={() => navigate('/login')} style={{ position: 'absolute', top: '20px', left: '20px', background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>

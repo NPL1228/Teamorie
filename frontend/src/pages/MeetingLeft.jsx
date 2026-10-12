@@ -1,18 +1,20 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { PhoneOff, ArrowLeft } from 'lucide-react';
+import NetworkBackground from '../components/NetworkBackground';
 
 export default function MeetingLeft() {
   const navigate = useNavigate();
+  const cardRef = useRef(null);
 
   useEffect(() => {
     document.title = 'Meeting Ended | Teamorie';
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100vw', background: 'var(--bg-dark)', alignItems: 'center', justifyContent: 'center' }}>
-      
-      <div className="glass-panel animate-fade-in" style={{ padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', maxWidth: '400px', textAlign: 'center' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100vw', background: 'var(--bg-dark)', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+      <NetworkBackground obstacleRef={cardRef} />
+      <div ref={cardRef} className="glass-panel animate-fade-in" style={{ padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', maxWidth: '400px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
         
         <div style={{ background: 'rgba(239, 68, 68, 0.15)', padding: '20px', borderRadius: '50%', color: '#ef4444' }}>
           <PhoneOff size={48} />

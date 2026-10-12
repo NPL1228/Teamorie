@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { User, Lock, ArrowRight, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import NetworkBackground from '../components/NetworkBackground';
 
 export default function Login({ onLogin }) {
   const [isRegistering, setIsRegistering] = useState(false);
@@ -11,6 +12,7 @@ export default function Login({ onLogin }) {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const cardRef = useRef(null);
 
   useEffect(() => {
     document.title = isRegistering ? 'Register | Teamorie' : 'Login | Teamorie';
@@ -61,10 +63,11 @@ export default function Login({ onLogin }) {
 
   return (
     <div style={{
-      display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '20px'
+      display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '20px', position: 'relative'
     }}>
-      <div className="glass-panel animate-fade-in" style={{
-        padding: '40px', width: '100%', maxWidth: '400px', textAlign: 'center'
+      <NetworkBackground obstacleRef={cardRef} />
+      <div ref={cardRef} className="glass-panel animate-fade-in" style={{
+        padding: '40px', width: '100%', maxWidth: '400px', textAlign: 'center', position: 'relative', zIndex: 1
       }}>
         <h1 style={{ marginBottom: '10px', fontSize: '2rem', background: 'linear-gradient(to right, #6366f1, #8b5cf6)', WebkitBackgroundClip: 'text', color: 'transparent' }}>
           Teamorie
